@@ -1,0 +1,32 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Seleciona todos os links (<a>) e botões de formulário (que disparam navegação)
+        const transitionElements = document.querySelectorAll('a, button[type="submit"]:not([formaction])');
+        const body = document.querySelector('body');
+        const animationDuration = 500; // Deve ser igual à duração no CSS (0.5s = 500ms)
+
+        transitionElements.forEach(el => {
+            el.addEventListener('click', function(e) {
+                // Se for um link e não for um link vazio ou que abra em nova aba
+                const isAnchor = el.tagName === 'A';
+                const href = isAnchor ? el.getAttribute('href') : null;
+                const isInternalLink = isAnchor && href && !href.startsWith('#') && el.target !== '_blank';
+                
+                // Se for um botão de formulário sem 'formaction' (ou seja, submete para a mesma página, o que não queremos interromper com JS)
+                // Vamos focar apenas em links que mudam de página.
+                if (isInternalLink) {
+                    e.preventDefault(); // Impede a navegação imediata
+                    
+                    // 1. Inicia a animação de saída
+                    body.classList.add('page-fade-out');
+
+                    // 2. Espera a animação terminar e então navega
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, animationDuration);
+                } 
+                // Para botões de formulário, a lógica é mais complexa, mas o foco deve ser em links <a>.
+            });
+        });
+    });
+</script>

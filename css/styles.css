@@ -1,0 +1,219 @@
+/* ================== ESTILO GERAL ================== */
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Começa 20px abaixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+body {
+    font-family: "Averia Libre", system-ui;
+    background-color: #f4f4f400; /* Cor de fundo principal */
+    color: #333; /* Cor do texto padrão */
+    margin: 0;
+    padding: 20px;
+    text-align: center; /* Centraliza o conteúdo principal */
+    min-height: 100vh;
+    box-sizing: border-box;
+    animation: page-enter 0.7s ease-out forwards; /* 0.5 segundos de animação de entrada */
+}
+
+.page-fade-out {
+    animation: page-exit 0.7s ease-in forwards;
+}
+
+/* Fundo com imagem e transparência */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/imagem_fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4; /* Define a transparência (10%) */
+    z-index: -1; /* Coloca a imagem atrás do conteúdo */
+}
+
+.nav-bar {
+    /* Centraliza e agrupa a navegação */
+    display: flex;
+    flex-direction: column; /* Coloca o texto e os botões em coluna */
+    align-items: center; 
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: rgba(236, 193, 193, 0.7); /* Fundo semi-transparente para o bloco de nav */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar h3 {
+    border-bottom: none; /* Remove a linha do h3 neste contexto */
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #250b0b;
+}
+
+/* Títulos */
+h1  {
+    font-family: "Averia Libre", system-ui;
+    font-size: 2.5em;
+    color: #000000; /* Um azul profissional */
+    border-bottom: 0.8px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 35px;
+}
+
+h2, h3 {
+    font-family: "Averia Libre", system-ui;
+    font-size: 2em;
+    color: #000000; /* Um azul profissional */
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
+.subtitle {
+    font-family: "Averia Libre", system-ui;
+    color: #000000; /* Um azul profissional */
+    font-size: 1.7em;
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
+
+hr {
+    border: 0;
+    margin: 20px 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(92, 25, 25, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+}
+
+
+/* ================== ESTILO DA LISTA DE LIVROS ================== */
+
+ul {
+    display: flex!important;
+    list-style: none;
+    padding: 0;
+    max-width: 1000px; /* Limita a largura da lista */
+    margin: 20px auto;
+    text-align: left;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os itens na linha */
+    gap: 20px; /* Espaçamento entre os itens */
+}
+
+li {
+    background-color: rgba(59, 6, 6, 0.85);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Define uma largura máxima para que duas caibam no UL de 1000px */
+    max-width: calc(50% - 10px);
+}
+
+.nome, .descricao, .status, .id, .autor, .genero, .data {
+    font-weight: bold;
+    font-family: "Averia Libre", system-ui;
+    font-size: 1.2em;
+    color: #96a9df;
+    display: inline-block;
+    min-width: 1000px;
+}
+
+.see_books_area {
+    font-family: "Averia Libre", system-ui;
+    font-size: 1.1em;
+    color: #f0f0f0;
+    margin-left: 10px;
+    display: inline-block;
+    min-width: 100px;
+    text-align: left;
+}
+
+
+
+/* ================== ESTILO DE FORMULÁRIOS ================== */
+
+form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho final */
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ================== ESTILO DOS BOTÕES ================== */
+
+button, .button, a.button, button:hover, .button:hover, a.button:hover, button a {
+    display: inline-block;
+    padding: 7.9px 10px;
+    margin: 5px;
+    font-family: "Averia Libre", system-ui;
+    background-color: #6b2c2c; /* Azul primário */
+    color: rgb(187, 185, 185);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links dentro de botões */
+    transition: background-color 0.23s ease;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+/* Estilo para o link dentro do botão (necessário para a tag <a>) */
+button a {
+    color: rgb(187, 185, 185);
+    text-decoration: none;
+}
+
+/* Mensagens de sucesso/erro */
+h3 {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+h3:contains("sucesso") {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+h3:contains("Erro") {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
